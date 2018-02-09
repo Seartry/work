@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello Vue.js</title>
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+</head>
+<body>
+	<div id="vue_det" style="text-align:center;">
+		<h1>姓名:{{name}}</h1>
+		<h1>城市:{{city}}</h1>
+		<h1>姓名:{{vm.name}}</h1>
+		<h1>城市:{{vm.city}}</h1>
+	</div>
+	<script type="text/javascript">
+		var _obj = {name:'张无忌',city:'上海'};
+		var vm = new Vue({
+			data:_obj
+		});
+		console.log(vm.name);
+		console.log(vm.$data.name);
+		console.log(vm.$data.city);
+		console.log(vm.$data);
+		var Component = Vue.extend({
+			data:function(){
+				return _obj;
+			}
+		});
+		var myComponentInstance = new Component();
+		console.log(myComponentInstance.name);
+		console.log(myComponentInstance.$data);
+		
+	</script>
+	<script type = "text/javascript">
+         var vmb = new Vue({
+            data: { a: 2 },
+            computed: {
+
+               // get only, just need a function
+               aSum: function () {
+                  return this.a + 2;
+               },
+
+               // both get and set
+               aSquare: {
+                  get: function () {
+                     return this.a*this.a;
+                  },
+                  set: function (v) {
+                     this.a = v*2;
+                  }
+               }
+            }
+         })
+         console.log(vmb.aSquare);  // -> 4
+         vmb.aSquare = 3;
+         console.log(vmb.a);       // -> 6
+         console.log(vmb.aSum); // -> 8
+      </script>
+</body>
+</html>

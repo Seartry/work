@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello Vue.js</title>
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+</head>
+<body>
+	<div id="info" style="text-align:center;">
+		<h1>{{message}}</h1>
+	</div>
+	<script type="text/javascript">
+		var vue_test = new Vue({
+			el:'#info',
+			data:{
+				message:'Hello Vue.js !'
+			}
+		});
+	</script>
+</body>
+</html>

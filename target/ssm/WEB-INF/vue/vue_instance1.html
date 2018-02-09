@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello Vue.js</title>
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+</head>
+<body>
+	<div id="vue_det" style="text-align:center;">
+		<h1>姓名:{{name}}</h1>
+		<h1>城市:{{city}}</h1>
+		<h1>描述:{{mydetail()}}</h1>
+		<h1>新城市:{{gotoCity}}</h1>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#vue_det',
+			data:{
+				name:'张三丰',
+				city:'北京',
+				address:'北京市朝阳区媒体村',
+				newcity:'上海'
+			},
+			methods:{
+				mydetail:function(){
+					return '我叫'+this.name+'，所在城市：'+this.city;
+				}
+			},
+			computed:{
+				gotoCity:function(){
+					return this.name+'搬迁到了'+this.newcity;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
