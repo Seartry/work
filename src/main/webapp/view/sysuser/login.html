@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello Vue.js</title>
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript" src="../../static/vue/vue-resource.js"></script>
+</head>
+<body>
+	<div id="info" style="text-align:center;">
+		<form>
+			<input type="text" name="userName" v-model="{{userName}}" /><br>
+			<input type="password" name="password" v-model="{{password}}" /><br>
+			<input type="submit" v-on:click="toLogin" value="登录" />
+		</form>
+	</div>
+	<script type="text/javascript">
+		var loginInfoVm = new Vue({
+			el:'#info',
+			data:{
+				userName:userName,
+				password:password,
+				loginUrl:'/sysUser/getSysUser'
+			},
+			methods:{
+				toLogin:function(){
+					this.$http.get(this.loginUrl).then((response) => {
+						this.$Set('loginData',response.data)
+					}).catch(function(){
+						console.log(response);
+					})
+				}
+			}
+		});
+		
+	</script>
+</body>
+</html>
