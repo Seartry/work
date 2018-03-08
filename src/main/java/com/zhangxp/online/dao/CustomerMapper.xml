@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangxp.online.dao.CustomerMapper">
+	
+	<resultMap type="Customer" id="customer">
+		<id column="cid" property="cid"/>
+		<result column="cname" property="cname"/>
+		<result column="cphone" property="cphone"/>
+		<result column="caddress" property="caddress"/>
+	</resultMap>
+	
+	<insert id="saveCustomer" parameterType="Customer">
+		insert into customer(cid,cname,cphone,caddress) values(#{cid},#{cname},#{cphone},#{caddress})
+	</insert>
+	
+	<update id="updateCustomer" parameterType="Customer">
+		update customer set cid=#{cid},cname=#{cname},cphone=#{cphone},caddress=#{caddress} where cid = #{cid}
+	</update>
+	
+	<delete id="deleteCustomer" parameterType="string">
+		delete from customer where cid = #{cid}
+	</delete>
+	
+	<select id="findCustomerByCid" parameterType="string" resultMap="customer">
+		select cid,cname,cphone,caddress from customer where cid = #{cid}
+	</select>
+	
+	<select id="findAll" resultMap="customer">
+		select cid,cname,cphone,caddress from customer
+	</select>
+</mapper>
