@@ -135,6 +135,13 @@
             <scope>test</scope>
         </dependency>
         
+        <!-- json  jar包 -->
+        <dependency>
+        	<groupId>org.json</groupId>
+        	<artifactId>json</artifactId>
+        	<version>20090211</version>
+        </dependency>
+        
         <!-- 引入Mybatis分页插件 -->
         <!-- 引入5.0版本在测试的时候会报错 4.2版本也会报错
         4.2版本总是出现String无法转换为某个对象的错误 

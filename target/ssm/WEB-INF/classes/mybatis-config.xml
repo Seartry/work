@@ -6,6 +6,7 @@
     <!-- 配置映射类的别名 -->
     <typeAliases>
         <package name="com.zhangxp.system.model" />
+        <package name="com.zhangxp.online.model"/>
     </typeAliases>
        
     <!-- mybatis分页插件 -->

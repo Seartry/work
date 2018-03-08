@@ -1,6 +1,15 @@
+com\zhangxp\online\service\CustomerServiceImpl.class
 com\zhangxp\system\dao\SysUserMapper.class
 com\zhangxp\system\model\SysUser.class
+com\zhangxp\online\model\Customer.class
 com\zhangxp\system\service\SysUserServiceImpl.class
+com\zhangxp\online\dao\CustomerMapper.class
 com\zhangxp\system\controller\SysUserController.class
 com\zhangxp\system\service\SysUserService.class
+com\zhangxp\online\model\Product.class
+com\zhangxp\online\model\Merchant.class
+com\zhangxp\online\model\Order.class
+com\zhangxp\online\model\OrderItem.class
 com\zhangxp\system\controller\BaseController.class
+com\zhangxp\online\service\CustomerService.class
+com\zhangxp\online\controller\CustomerController.class
