@@ -1,9 +1,18 @@
 package com.zhangxp.system.controller;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,19 +20,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.zhangxp.common.base.controller.BaseController;
 import com.zhangxp.system.model.SysUser;
 import com.zhangxp.system.service.SysUserService;
+import com.zhangxp.utils.Encrypt;
 
 /**
  * 用户控制器
  */
 @Controller
 @RequestMapping(value = "/sysUser")
-public class SysUserController {
-    @Resource
-    private SysUserService sysUserService;
-
+public class SysUserController extends BaseController{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3256078281923918918L;
+	@SuppressWarnings("restriction")
+	@Resource
+    private SysUserService sysUserService;
+    
+    @RequestMapping("/login")
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		password = Encrypt.encodeByBase64(password);
+		SysUser sysUser  = sysUserService.findByUserName(userName);
+		if(sysUser == null || !sysUser.getPassword().equals(password)) {
+			System.out.println("用户名或者密码错误！");
+		}else {
+			System.out.println("登录成功！");
+			req.getSession().setAttribute("userName", userName);
+			System.out.println("-----");
+			resp.sendRedirect("sysUserInfo");
+		}
+	}
+
+
+
+	/**
      * 跳转到添加用户界面
      * @return
      */
@@ -40,6 +74,12 @@ public class SysUserController {
      */
     @RequestMapping("/addSysUser")
     public String addSysUser(Model model,SysUser sysUser) {
+    	String password = sysUser.getPassword();
+    	password = Encrypt.encodeByBase64(password);
+    	sysUser.setPassword(password);
+    	if(StringUtils.isNotBlank(password)) {
+    		
+    	}
     	if(sysUser != null) {
     		sysUserService.saveSysUser(sysUser);
     	}
@@ -80,7 +120,7 @@ public class SysUserController {
      * @return
      */
     @RequestMapping("/getSysUser")
-    public String getSysUser(String userId,Model model) {
+    public String getSysUser(Integer userId,Model model) {
     	SysUser sysUser = sysUserService.findByUserId(userId);
     	model.addAttribute("sysUser",sysUser);
     	return "editSysUser";
@@ -92,7 +132,7 @@ public class SysUserController {
      * @return
      */
     @RequestMapping("/delSysUser")
-    public String deleteSysUser(String userId,Model model) {
+    public String deleteSysUser(Integer userId,Model model) {
     	model.addAttribute("sysUser", sysUserService.deleteSysUser(userId));
     	return "redirect:/sysUser/sysUserInfo";
     }

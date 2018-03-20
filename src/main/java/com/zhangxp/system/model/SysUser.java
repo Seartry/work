@@ -5,23 +5,23 @@ package com.zhangxp.system.model;
  */
 public class SysUser {
     // 成员变量
-    private String userId;
+    private Integer userId;
     private String userName;
     private String password;
     
     public SysUser() {
 		super();
 	}
-	public SysUser(String userId, String userName, String password) {
+	public SysUser(Integer userId, String userName, String password) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
 	}
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

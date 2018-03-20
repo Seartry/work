@@ -7,35 +7,36 @@ import org.springframework.stereotype.Service;
 
 import com.zhangxp.system.dao.SysUserMapper;
 import com.zhangxp.system.model.SysUser;
+
 @Service
-public class SysUserServiceImpl implements SysUserService{
+public class SysUserServiceImpl implements SysUserService {
 
 	@Autowired
 	private SysUserMapper userMapper;
 
-	@Override
 	public void saveSysUser(SysUser sysUser) {
 		userMapper.saveSysUser(sysUser);
 	}
 
-	@Override
 	public boolean updateSysUser(SysUser sysUser) {
 		return userMapper.updateSysUser(sysUser);
 	}
 
-	@Override
-	public boolean deleteSysUser(String userId) {
+	public boolean deleteSysUser(Integer userId) {
 		return userMapper.deleteSysUser(userId);
 	}
 
-	@Override
-	public SysUser findByUserId(String userId) {
+	public SysUser findByUserId(Integer userId) {
 		return userMapper.findByUserId(userId);
 	}
-	
-	@Override
+
 	public List<SysUser> findAll() {
 		return userMapper.findAll();
+	}
+
+	public SysUser findByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return userMapper.findByUserName(userName);
 	}
 
 }

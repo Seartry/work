@@ -27,7 +27,8 @@ h3 {
 </head>
 <body>
    <h3>
-        <a href="${path }/sysUser/sysUserInfo">进入用户管理页</a>
+        <a href="${path }/login.jsp">进入用户管理页</a>
     </h3>
+    
 </body>
 </html>

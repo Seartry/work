@@ -68,6 +68,12 @@
             <version>1.8.0</version>
         </dependency>
 
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-lang3</artifactId>
+		  <version>3.7</version>
+		</dependency>
+
         <!-- MyBatis相关包 -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -75,19 +81,20 @@
             <version>3.3.0</version>
         </dependency>
         <!-- Oracle驱动包 -->  
+         <!-- 
 		<dependency>
 		  <groupId>com.oracle</groupId>
 		  <artifactId>ojdbc6</artifactId>
 		  <version>12.1.0.1-atlassian-hosted</version>
 		</dependency>
+		-->
         <!-- MySQL相关包 -->
-        <!--  
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.26</version>
         </dependency>
-       	-->
+       	
         <!-- 数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -181,7 +188,7 @@
 		          <version>2.2</version>
 		      	<executions>
 					<execution>
-						<id>cargo-run</id>
+						<id>car-run</id>
 						<phase>install</phase>
 						<goals>
 							<goal>run</goal>	

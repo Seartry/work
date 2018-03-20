@@ -11,7 +11,8 @@ import com.zhangxp.system.model.SysUser;
 public interface SysUserMapper {
 	void saveSysUser(SysUser sysUser);
     boolean updateSysUser(SysUser sysUser);
-    boolean deleteSysUser(String userId);
-    SysUser findByUserId(String userId);
+    boolean deleteSysUser(Integer userId);
+    SysUser findByUserId(Integer userId);
+    SysUser findByUserName(String userName);
     List<SysUser> findAll();
 }

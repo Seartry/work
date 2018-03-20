@@ -18,13 +18,18 @@
 	</update>
 	
 	<!-- 删除 -->
-	<delete id="deleteSysUser" parameterType="string">
+	<delete id="deleteSysUser" parameterType="Integer">
 		delete from sys_user where user_id=#{userId}
 	</delete>
 	
-	<!-- 根据username查找单个用户 -->
-    <select id="findByUserId" parameterType="string" resultMap="sysUserMap">
+	<!-- 根据userId查找单个用户 -->
+    <select id="findByUserId" parameterType="Integer" resultMap="sysUserMap">
         SELECT * FROM sys_user WHERE user_id=#{userId}
+    </select>
+    
+    <!-- 根据username查找单个用户 -->
+    <select id="findByUserName" parameterType="string" resultMap="sysUserMap">
+        SELECT * FROM sys_user WHERE user_name=#{userName}
     </select>
     
     <!-- 查询所有 -->
